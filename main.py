@@ -6,6 +6,9 @@ fs = 44100     # Частота дискретизації (кількість �
 chunk = 1024   # Кількість семплів (відліків) за один кадр
 width, height = 800, 400  
 
+BG_IMG = image.load('images2.png')
+BG_IMG = transform.scale(BG_IMG, (800, 400))
+
 init()
 screen = display.set_mode((width, height))
 display.set_caption("Live Audio (Mic)")
@@ -36,10 +39,9 @@ running = True
 while running:
     for e in event.get():
         if e.type == QUIT:
-            running = False
+            running = FalseS
 
-    screen.fill((0, 0, 0))
-
+    screen.blit(BG_IMG, (0, 0))
     # Готуємо список точок для малювання хвилі
     points = []
     for i, sample in enumerate(data):
@@ -56,4 +58,3 @@ while running:
 
 stream.stop()
 quit()
-
